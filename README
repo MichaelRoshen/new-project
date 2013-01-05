@@ -1,0 +1,46 @@
+if you have install the git  on your computer and you have a github account,  and you want to use github to manage your project , you should config it first
+ 
+1. generate ssh-key, here is my email address, then you can get three files, if_rsa.pub is what we want
+ssh-keygen -t rsa -C "michael_roshen@163.com"
+ 
+Ruby代码  
+$ cd ~/.ssh  
+$ ls  
+id_rsa  id_rsa.pub  known_hosts  
+ 
+2. open the id_rsa.pub with vim and copy it to your github
+open https://github.com/settings/ssh to add the ssh key
+ 
+3. test, run this command, then you can get the cuccess message
+ssh -T git@github.com
+Hi MichaelRoshen! You've successfully authenticated, but GitHub does not provide shell access.
+ 
+that means it works, and how to use git to push our project to the github? that me show you
+ 
+1. open the your github(https://github.com/new), and create a repo, names : git@github.com:MichaelRoshen/new-project.git
+ 
+2. create a simple project
+ 
+Ruby代码  
+$ mkdir new-project  
+$ cd new-project/  
+$ git init  
+Initialized empty Git repository in /home/chenc/new-project/.git/  
+$ touch README  
+$ git add README   
+$ git commit -m "first commit"  
+[master (root-commit) 1f2e23c] first commit  
+ 0 files changed, 0 insertions(+), 0 deletions(-)  
+ create mode 100644 README  
+ 
+3. then push it to the github
+ 
+Ruby代码  
+$ git remote add origin git@github.com:MichaelRoshen/new-project.git  
+$ git push origin master  
+Counting objects: 3, done.  
+Writing objects: 100% (3/3), 211 bytes, done.  
+Total 3 (delta 0), reused 0 (delta 0)  
+To git@github.com:MichaelRoshen/new-project.git  
+
+4. open your github , you will find the README file has been pushed!
